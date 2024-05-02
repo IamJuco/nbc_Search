@@ -38,6 +38,16 @@
             android:layout_marginEnd="10dp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/et_searchArea"
+            app:layout_constraintEnd_toStartOf="@+id/iv_searchMove"
+            app:layout_constraintTop_toTopOf="@+id/et_searchArea" />
+
+        <ImageView
+            android:id="@+id/iv_searchMove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search_move"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/et_searchArea"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/et_searchArea" />
 
