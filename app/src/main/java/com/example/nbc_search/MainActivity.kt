@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViewPager2() {
-
         viewPager2Adapter = ViewPager2Adapter(this)
         viewPager2Adapter.addFragment(SearchFragment())
         viewPager2Adapter.addFragment(StorageFragment())
@@ -46,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                     1 -> tab.text = "내 보관함"
                 }
             }.attach()
-
         }
+
     }
 }

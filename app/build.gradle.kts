@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -39,6 +40,8 @@ android {
 }
 
 dependencies {
+    // ViewPager2
+    implementation (libs.androidx.viewpager2)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

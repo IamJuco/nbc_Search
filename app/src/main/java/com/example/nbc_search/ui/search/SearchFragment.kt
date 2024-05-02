@@ -1,10 +1,12 @@
 package com.example.nbc_search.ui.search
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.nbc_search.databinding.FragmentSearchBinding
 
@@ -30,7 +32,7 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupAdapter()
-
+        setupListener()
 
     }
 
@@ -40,4 +42,14 @@ class SearchFragment : Fragment() {
         binding.rvSearch.layoutManager = GridLayoutManager(context, 2)
     }
 
+    private fun setupListener() {
+        binding.ivSearchMove.setOnClickListener {
+            keyboardHide()
+        }
+    }
+
+    private fun keyboardHide() {
+        val inputMethodManager = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        inputMethodManager?.hideSoftInputFromWindow(view?.windowToken, 0)
+    }
 }
