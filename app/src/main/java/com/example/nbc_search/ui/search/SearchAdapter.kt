@@ -3,6 +3,7 @@ package com.example.nbc_search.ui.search
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nbc_search.FormatManager
 import com.example.nbc_search.databinding.ItemSearchBinding
 import com.example.nbc_search.model.SearchModel
 
@@ -23,7 +24,13 @@ class SearchAdapter(private val items: List<SearchModel>) : RecyclerView.Adapter
     class ViewHolder(private val binding: ItemSearchBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: SearchModel) {
-
+            binding.apply {
+                ivArea.setImageResource(item.thumbnailUrl)
+                tvSite.text = item.siteName
+                tvDate.text = item.dateTime.let { FormatManager.dateFormat(it) }
+                // 클릭 이벤트 설정할것
+//                ivFavorite.setImageResource(item.favorite)
+            }
         }
     }
 }

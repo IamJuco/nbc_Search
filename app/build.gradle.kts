@@ -40,8 +40,18 @@ android {
 }
 
 dependencies {
+    // Retrofit
+    implementation (libs.retrofit)
+    // Converter ( Json Mapping )
+    implementation (libs.converter.gson)
+    // okhttp3
+    implementation (libs.logging.interceptor)
+    // RetrofitAdapter - Rxjava
+    implementation (libs.adapter.rxjava3)
     // ViewPager2
     implementation (libs.androidx.viewpager2)
+    // Coroutine
+    implementation (libs.kotlinx.coroutines.android)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
