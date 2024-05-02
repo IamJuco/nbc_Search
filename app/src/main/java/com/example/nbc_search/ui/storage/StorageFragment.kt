@@ -1,12 +1,13 @@
-package com.example.nbc_search
+package com.example.nbc_search.ui.storage
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.nbc_search.R
 
-class SearchFragment : Fragment() {
+class StorageFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,7 +17,8 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+
+        return inflater.inflate(R.layout.fragment_storage, container, false)
     }
+
 }

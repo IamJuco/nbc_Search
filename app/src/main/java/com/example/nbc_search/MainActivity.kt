@@ -3,10 +3,11 @@ package com.example.nbc_search
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.nbc_search.databinding.ActivityMainBinding
+import com.example.nbc_search.ui.search.SearchFragment
+import com.example.nbc_search.ui.storage.StorageFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
