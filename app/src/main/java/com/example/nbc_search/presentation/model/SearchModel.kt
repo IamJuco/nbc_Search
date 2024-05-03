@@ -6,7 +6,7 @@ import java.util.Date
 
 @Parcelize
 data class SearchModel (
-    val thumbnailUrl: Int,
+    val thumbnailUrl: String,
     val siteName: String,
     val dateTime: Date,
     val favorite: Int
