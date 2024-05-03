@@ -9,5 +9,5 @@ data class SearchModel (
     val thumbnailUrl: String,
     val siteName: String,
     val dateTime: Date,
-    val favorite: Int
+    var favorite: Boolean = false
 ) : Parcelable
