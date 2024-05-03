@@ -1,4 +1,4 @@
-package com.example.nbc_search.ui.storage
+package com.example.nbc_search.presentation.ui.storage
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

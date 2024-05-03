@@ -1,4 +1,4 @@
-package com.example.nbc_search.ui.search
+package com.example.nbc_search.presentation.ui.search
 
 import android.content.Context
 import android.os.Bundle

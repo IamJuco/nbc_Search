@@ -1,4 +1,4 @@
-package com.example.nbc_search.model
+package com.example.nbc_search.presentation.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

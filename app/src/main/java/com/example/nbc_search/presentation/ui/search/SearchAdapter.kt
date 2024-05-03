@@ -1,19 +1,19 @@
-package com.example.nbc_search.ui.search
+package com.example.nbc_search.presentation.ui.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nbc_search.FormatManager
 import com.example.nbc_search.databinding.ItemSearchBinding
-import com.example.nbc_search.model.SearchModel
+import com.example.nbc_search.presentation.model.SearchModel
 
 class SearchAdapter(private val items: List<SearchModel>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemSearchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: SearchAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(items[position])
     }
 
