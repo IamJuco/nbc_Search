@@ -13,7 +13,9 @@ class SearchAdapter(private var items: List<SearchModel>) : RecyclerView.Adapter
     fun updateItems(newItems: List<SearchModel>) {
         items = newItems
         notifyDataSetChanged()
+        //notifyItemInserted()
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemSearchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)

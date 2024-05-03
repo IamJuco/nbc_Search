@@ -50,9 +50,9 @@ class SearchFragment : Fragment() {
 
     private fun setupListener() {
         binding.ivSearchMove.setOnClickListener {
-            val query = binding.etSearchArea.text.toString()
-            if (query.isNotEmpty()) {
-                searchImages(query)
+            val searchArea = binding.etSearchArea.text.toString()
+            if (searchArea.isNotEmpty()) {
+                searchImages(searchArea)
             } else {
                 Toast.makeText(context, "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show()
             }
@@ -61,8 +61,12 @@ class SearchFragment : Fragment() {
     }
 
     private fun searchImages(query: String) {
+        // 프래그먼트가 파괴될때 자동으로 실행 중단 ( 메모리 누수 방지 )
         lifecycleScope.launch {
+            // RetrofitClient에 접근및 검색어를 쿼리 파라미터중 query에 전달
             val response = RetrofitClient.searchImageRetrofit.searchImage(query)
+            // SearchImageResponse의 documents에 접근
+            // documents는 ImageDocumentResponse를 리스트 형태로 가지고있음 ( 각 이미지에 대한 상세 정보 )
             if (response.documents != null) {
                 updateAdapter(response.documents.map {
                     SearchModel(
