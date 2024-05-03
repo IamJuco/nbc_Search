@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.nbc_search.Constants
 import com.example.nbc_search.R
 import com.example.nbc_search.databinding.FragmentSearchBinding
 import com.example.nbc_search.network.RetrofitClient
@@ -20,7 +21,6 @@ import java.util.Date
 class SearchFragment : Fragment(), OnClickListener {
 
     private lateinit var binding: FragmentSearchBinding
-
     private lateinit var searchAdapter: SearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +40,6 @@ class SearchFragment : Fragment(), OnClickListener {
 
         setupAdapter()
         setupListener()
-
     }
 
     override fun onItemClick(position: Int) {
@@ -87,12 +86,12 @@ class SearchFragment : Fragment(), OnClickListener {
         }
     }
 
+    private fun updateAdapter(items: List<SearchModel>) {
+        searchAdapter.updateItems(items)
+    }
+
     private fun keyboardHide() {
         val inputMethodManager = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         inputMethodManager?.hideSoftInputFromWindow(view?.windowToken, 0)
-    }
-
-    private fun updateAdapter(items: List<SearchModel>) {
-        searchAdapter.updateItems(items)
     }
 }

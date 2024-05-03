@@ -35,7 +35,6 @@ class SearchAdapter(private var items: List<SearchModel>, private val listener: 
     }
 
     class ViewHolder(private val binding: ItemSearchBinding) : RecyclerView.ViewHolder(binding.root) {
-
         fun bind(item: SearchModel, listener: OnClickListener) {
             binding.apply {
                 Glide.with(ivArea.context)
