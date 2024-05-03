@@ -25,10 +25,10 @@
             android:layout_height="48dp"
             android:layout_margin="10dp"
             android:background="@android:color/transparent"
-            android:hint="검색어 입력"
+            android:hint="@string/fragment_search_hint"
             app:layout_constraintEnd_toStartOf="@+id/iv_searchCancel"
             app:layout_constraintStart_toEndOf="@+id/iv_logo"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
             android:id="@+id/iv_searchCancel"
