@@ -6,6 +6,8 @@
     <string name="fragment_search_hint">검색어 입력</string>
     <string name="item_search_site">네이버 블로그</string>
     <string name="item_search_date">2024–05–02 15:15:58</string>
+    <string name="item_storage_site">네이버 블로그</string>
+    <string name="item_storage_date">2024–05–02 15:15:58</string>
 
     <!-- Activity and Fragment -->
     <string name="activity_main_tab_search">이미지 검색</string>
