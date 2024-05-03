@@ -13,6 +13,9 @@ class Constants {
 
         // 날짜
         const val DATE_FORMAT = "yyyy-MM-dd HH:mm:ss"
+
+        // favorite 데이터
+        const val FAVORITE_DATA = "favorite_data"
     }
 }
 
