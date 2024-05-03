@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.nbc_search.databinding.FragmentSearchBinding
@@ -52,6 +53,8 @@ class SearchFragment : Fragment() {
             val query = binding.etSearchArea.text.toString()
             if (query.isNotEmpty()) {
                 searchImages(query)
+            } else {
+                Toast.makeText(context, "검색어를 입력해주세요.", Toast.LENGTH_SHORT).show()
             }
             keyboardHide()
         }
