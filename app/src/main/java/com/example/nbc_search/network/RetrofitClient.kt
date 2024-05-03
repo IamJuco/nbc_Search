@@ -24,7 +24,7 @@ object RetrofitClient {
     }
 
     // Retrofit ( KakaoSearchAPI의 API 호출을 수행할 수 있게 해줌 )
-    val searchImage: KakaoSearchAPI by lazy {
+    val searchImageRetrofit: KakaoSearchAPI by lazy {
         retrofit.create(KakaoSearchAPI::class.java)
     }
 }

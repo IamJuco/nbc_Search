@@ -52,6 +52,9 @@ dependencies {
     implementation (libs.androidx.viewpager2)
     // Coroutine
     implementation (libs.kotlinx.coroutines.android)
+    // Glide
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

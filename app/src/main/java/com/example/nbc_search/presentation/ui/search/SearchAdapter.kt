@@ -3,11 +3,17 @@ package com.example.nbc_search.presentation.ui.search
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.nbc_search.FormatManager
 import com.example.nbc_search.databinding.ItemSearchBinding
 import com.example.nbc_search.presentation.model.SearchModel
 
-class SearchAdapter(private val items: List<SearchModel>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+class SearchAdapter(private var items: List<SearchModel>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+
+    fun updateItems(newItems: List<SearchModel>) {
+        items = newItems
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemSearchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
@@ -25,11 +31,11 @@ class SearchAdapter(private val items: List<SearchModel>) : RecyclerView.Adapter
 
         fun bind(item: SearchModel) {
             binding.apply {
-                ivArea.setImageResource(item.thumbnailUrl)
+                Glide.with(ivArea.context)
+                    .load(item.thumbnailUrl)
+                    .into(ivArea)
                 tvSite.text = item.siteName
-                tvDate.text = item.dateTime.let { FormatManager.dateFormat(it) }
-                // 클릭 이벤트 설정할것
-//                ivFavorite.setImageResource(item.favorite)
+                tvDate.text = FormatManager.dateFormat(item.dateTime)
             }
         }
     }

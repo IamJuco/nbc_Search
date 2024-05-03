@@ -7,8 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.nbc_search.databinding.FragmentSearchBinding
+import com.example.nbc_search.network.RetrofitClient
+import com.example.nbc_search.presentation.model.SearchModel
+import kotlinx.coroutines.launch
+import java.util.Date
 
 class SearchFragment : Fragment() {
 
@@ -44,12 +49,36 @@ class SearchFragment : Fragment() {
 
     private fun setupListener() {
         binding.ivSearchMove.setOnClickListener {
+            val query = binding.etSearchArea.text.toString()
+            if (query.isNotEmpty()) {
+                searchImages(query)
+            }
             keyboardHide()
+        }
+    }
+
+    private fun searchImages(query: String) {
+        lifecycleScope.launch {
+            val response = RetrofitClient.searchImageRetrofit.searchImage(query)
+            if (response.documents != null) {
+                updateAdapter(response.documents.map {
+                    SearchModel(
+                        thumbnailUrl = it.thumbnailUrl ?: "",
+                        siteName = it.displaySitename ?: "",
+                        dateTime = it.datetime ?: Date(),
+                        favorite = 0
+                    )
+                })
+            }
         }
     }
 
     private fun keyboardHide() {
         val inputMethodManager = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         inputMethodManager?.hideSoftInputFromWindow(view?.windowToken, 0)
+    }
+
+    private fun updateAdapter(items: List<SearchModel>) {
+        searchAdapter.updateItems(items)
     }
 }
