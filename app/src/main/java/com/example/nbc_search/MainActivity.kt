@@ -41,8 +41,8 @@ class MainActivity : AppCompatActivity() {
             vpArea.adapter = viewPager2Adapter
             TabLayoutMediator(tabMain, vpArea) { tab, position ->
                 when (position) {
-                    0 -> tab.text = "이미지 검색"
-                    1 -> tab.text = "내 보관함"
+                    0 -> tab.text = getString(R.string.activity_main_tab_search)
+                    1 -> tab.text = getString(R.string.activity_main_tab_storage)
                 }
             }.attach()
         }
