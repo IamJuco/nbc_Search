@@ -24,11 +24,6 @@ class StorageAdapter(private val items: List<SearchModel>) : RecyclerView.Adapte
 
     class ViewHolder(private val binding: ItemStorageBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: SearchModel) {
-            Glide.with(binding.ivArea.context)
-                .load(item.thumbnailUrl)
-                .into(binding.ivArea)
-            binding.tvSite.text = item.siteName
-            binding.tvDate.text = FormatManager.dateFormat(item.dateTime)
         }
     }
 }
