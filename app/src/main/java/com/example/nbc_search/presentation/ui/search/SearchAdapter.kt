@@ -5,8 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.nbc_search.Constants
 import com.example.nbc_search.FormatManager
 import com.example.nbc_search.databinding.ItemSearchBinding
+import com.example.nbc_search.presentation.mapper.ImageMapper
 import com.example.nbc_search.presentation.model.SearchModel
 
 class SearchAdapter(private var items: List<SearchModel>, private val listener: OnClickListener) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
@@ -43,21 +45,27 @@ class SearchAdapter(private var items: List<SearchModel>, private val listener: 
                 tvSite.text = item.siteName
                 tvDate.text = FormatManager.dateFormat(item.dateTime)
 
-                if (item.favorite) {
-                    ivFavorite.visibility = View.VISIBLE
-                } else {
-                    ivFavorite.visibility = View.GONE
-                }
+                updateFavorite(item.favorite)
 
                 itemArea.setOnClickListener {
                     item.favorite = !item.favorite
-                    if (item.favorite) {
-                        ivFavorite.visibility = View.VISIBLE
-                    } else {
-                        ivFavorite.visibility = View.GONE
-                    }
+                    updateFavorite(item.favorite)
                     listener.onItemClick(adapterPosition)
+
+                    if (item.favorite) {
+                        ImageMapper.saveData(ivArea.context, item.thumbnailUrl, item, Constants.FAVORITE_DATA)
+                    }
+                    //else {
+                    //    ImageMapper.removeData(ivArea.context, item.thumbnailUrl, Constants.FAVORITE_DATA)
+                    //}
                 }
+            }
+        }
+        private fun updateFavorite(isFavorite: Boolean) {
+            if (isFavorite) {
+                binding.ivFavorite.visibility = View.VISIBLE
+            } else {
+                binding.ivFavorite.visibility = View.GONE
             }
         }
     }
