@@ -3,6 +3,7 @@ package com.example.nbc_search.presentation.ui.storage
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -40,7 +41,17 @@ class StorageFragment : Fragment(), OnClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        removeDialog()
+        val thumbnailUrl = storageAdapter.getThumbnailUrl(position)
+        removeDialog(thumbnailUrl)
+    }
+
+    // onResume에서 데이터 갱신
+    // StorageFragment 화면에 나타날 때마다 (onResume) 에서 데이터 갱신하는 방법
+    override fun onResume() {
+        super.onResume()
+        val favoriteItems = loadData(requireContext(), Constants.FAVORITE_DATA)
+        updateAdapter(favoriteItems)
+        Log.d("Resume", "ResumeCalled")
     }
 
     private fun setupAdapter() {
@@ -57,14 +68,15 @@ class StorageFragment : Fragment(), OnClickListener {
         }
     }
 
-    private fun removeDialog() {
+    private fun removeDialog(thumbnailUrl: String) {
         val builder = AlertDialog.Builder(context)
         builder
             .setTitle("좋아요 해제")
-            .setMessage("정말 좋아요 해지를 하시겠습니까?")
+            .setMessage("정말 좋아요를 해제 하시겠습니까?")
             .setIcon(R.drawable.ic_favorite)
             .setPositiveButton("예") { _, _ ->
-
+                context?.let { ImageMapper.removeData(it,thumbnailUrl, Constants.FAVORITE_DATA ) }
+                updateData()
             }
             .setNegativeButton("아니요") { dialog, _ ->
                 dialog.dismiss()
@@ -73,5 +85,13 @@ class StorageFragment : Fragment(), OnClickListener {
             .show()
     }
 
+    private fun updateAdapter(items: List<SearchModel>) {
+        storageAdapter.updateItems(items)
+    }
+
+    private fun updateData() {
+        val favoriteItems = loadData(requireContext(), Constants.FAVORITE_DATA)
+        updateAdapter(favoriteItems)
+    }
 
 }

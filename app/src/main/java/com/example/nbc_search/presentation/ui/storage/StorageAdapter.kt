@@ -9,7 +9,16 @@ import com.example.nbc_search.databinding.ItemStorageBinding
 import com.example.nbc_search.presentation.model.SearchModel
 import com.example.nbc_search.presentation.ui.search.OnClickListener
 
-class StorageAdapter(private val items: List<SearchModel>, private val listener: OnClickListener) : RecyclerView.Adapter<StorageAdapter.ViewHolder>(){
+class StorageAdapter(private var items: List<SearchModel>, private val listener: OnClickListener) : RecyclerView.Adapter<StorageAdapter.ViewHolder>(){
+
+    fun updateItems(newItems: List<SearchModel>) {
+        items = newItems
+        notifyDataSetChanged()
+    }
+
+    fun getThumbnailUrl(position: Int): String {
+        return items[position].thumbnailUrl
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemStorageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
