@@ -14,6 +14,7 @@ import com.example.nbc_search.Constants
 import com.example.nbc_search.R
 import com.example.nbc_search.databinding.FragmentSearchBinding
 import com.example.nbc_search.network.RetrofitClient
+import com.example.nbc_search.presentation.mapper.ImageMapper
 import com.example.nbc_search.presentation.model.SearchModel
 import kotlinx.coroutines.launch
 import java.util.Date
@@ -40,6 +41,7 @@ class SearchFragment : Fragment(), OnClickListener {
 
         setupAdapter()
         setupListener()
+        loadSearchData()
     }
 
     override fun onItemClick(position: Int) {
@@ -83,6 +85,7 @@ class SearchFragment : Fragment(), OnClickListener {
                     )
                 })
             }
+            saveSearchData(query)
         }
     }
 
@@ -93,5 +96,13 @@ class SearchFragment : Fragment(), OnClickListener {
     private fun keyboardHide() {
         val inputMethodManager = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         inputMethodManager?.hideSoftInputFromWindow(view?.windowToken, 0)
+    }
+    private fun saveSearchData(query: String) {
+        ImageMapper.saveData(requireContext(), Constants.SEARCH_DATA_KEY, query, Constants.SEARCH_DATA)
+    }
+
+    private fun loadSearchData() {
+        val lastSearchQuery = ImageMapper.loadData(requireContext(), Constants.SEARCH_DATA_KEY, String::class.java, Constants.SEARCH_DATA )
+        binding.etSearchArea.setText(lastSearchQuery)
     }
 }

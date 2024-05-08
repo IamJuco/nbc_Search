@@ -49,8 +49,7 @@ class StorageFragment : Fragment(), OnClickListener {
     // StorageFragment 화면에 나타날 때마다 (onResume) 에서 데이터 갱신하는 방법
     override fun onResume() {
         super.onResume()
-        val favoriteItems = loadData(requireContext(), Constants.FAVORITE_DATA)
-        updateAdapter(favoriteItems)
+        updateData()
         Log.d("Resume", "ResumeCalled")
     }
 
