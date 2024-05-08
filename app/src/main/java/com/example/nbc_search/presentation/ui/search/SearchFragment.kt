@@ -14,7 +14,7 @@ import com.example.nbc_search.Constants
 import com.example.nbc_search.R
 import com.example.nbc_search.databinding.FragmentSearchBinding
 import com.example.nbc_search.network.RetrofitClient
-import com.example.nbc_search.presentation.mapper.ImageMapper
+import com.example.nbc_search.presentation.db.ImageMapper
 import com.example.nbc_search.presentation.model.SearchModel
 import kotlinx.coroutines.launch
 import java.util.Date

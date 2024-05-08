@@ -1,4 +1,4 @@
-package com.example.nbc_search.presentation.mapper
+package com.example.nbc_search.presentation.db
 
 import android.content.Context
 import android.util.Log

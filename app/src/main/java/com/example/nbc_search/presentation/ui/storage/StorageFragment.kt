@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.nbc_search.Constants
 import com.example.nbc_search.R
 import com.example.nbc_search.databinding.FragmentStorageBinding
-import com.example.nbc_search.presentation.mapper.ImageMapper
+import com.example.nbc_search.presentation.db.ImageMapper
 import com.example.nbc_search.presentation.model.SearchModel
 import com.example.nbc_search.presentation.ui.search.OnClickListener
 
