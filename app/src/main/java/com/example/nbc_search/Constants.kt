@@ -16,6 +16,9 @@ class Constants {
 
         // favorite 데이터
         const val FAVORITE_DATA = "favorite_data"
+
+        // 검색 저장 데이터
+        const val SEARCH_DATA = "search_data"
     }
 }
 
