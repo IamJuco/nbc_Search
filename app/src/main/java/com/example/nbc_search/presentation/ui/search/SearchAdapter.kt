@@ -55,9 +55,9 @@ class SearchAdapter(private var items: List<SearchModel>, private val listener: 
                     if (item.favorite) {
                         ImageMapper.saveData(ivArea.context, item.thumbnailUrl, item, Constants.FAVORITE_DATA)
                     }
-                    //else {
-                    //    ImageMapper.removeData(ivArea.context, item.thumbnailUrl, Constants.FAVORITE_DATA)
-                    //}
+                    else {
+                        ImageMapper.removeData(ivArea.context, item.thumbnailUrl, Constants.FAVORITE_DATA)
+                    }
                 }
             }
         }
