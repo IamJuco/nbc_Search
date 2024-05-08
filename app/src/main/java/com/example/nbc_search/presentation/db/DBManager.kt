@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
 
-object ImageMapper {
+object DBManager {
     private val gson = Gson()
 
     private fun <T> fromJson(json: String, clazz: Class<T>): T {

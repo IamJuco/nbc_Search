@@ -14,7 +14,7 @@ import com.example.nbc_search.Constants
 import com.example.nbc_search.R
 import com.example.nbc_search.databinding.FragmentSearchBinding
 import com.example.nbc_search.network.RetrofitClient
-import com.example.nbc_search.presentation.db.ImageMapper
+import com.example.nbc_search.presentation.db.DBManager
 import com.example.nbc_search.presentation.model.SearchModel
 import kotlinx.coroutines.launch
 import java.util.Date
@@ -98,11 +98,11 @@ class SearchFragment : Fragment(), OnClickListener {
         inputMethodManager?.hideSoftInputFromWindow(view?.windowToken, 0)
     }
     private fun saveSearchData(query: String) {
-        ImageMapper.saveData(requireContext(), Constants.SEARCH_DATA_KEY, query, Constants.SEARCH_DATA)
+        DBManager.saveData(requireContext(), Constants.SEARCH_DATA_KEY, query, Constants.SEARCH_DATA)
     }
 
     private fun loadSearchData() {
-        val lastSearchQuery = ImageMapper.loadData(requireContext(), Constants.SEARCH_DATA_KEY, String::class.java, Constants.SEARCH_DATA )
+        val lastSearchQuery = DBManager.loadData(requireContext(), Constants.SEARCH_DATA_KEY, String::class.java, Constants.SEARCH_DATA )
         binding.etSearchArea.setText(lastSearchQuery)
     }
 }

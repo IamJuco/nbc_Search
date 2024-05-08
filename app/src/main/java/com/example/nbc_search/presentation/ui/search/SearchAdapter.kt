@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.nbc_search.Constants
 import com.example.nbc_search.FormatManager
 import com.example.nbc_search.databinding.ItemSearchBinding
-import com.example.nbc_search.presentation.db.ImageMapper
+import com.example.nbc_search.presentation.db.DBManager
 import com.example.nbc_search.presentation.model.SearchModel
 
 class SearchAdapter(private var items: List<SearchModel>, private val listener: OnClickListener) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
@@ -53,10 +53,10 @@ class SearchAdapter(private var items: List<SearchModel>, private val listener: 
                     listener.onItemClick(adapterPosition)
 
                     if (item.favorite) {
-                        ImageMapper.saveData(ivArea.context, item.thumbnailUrl, item, Constants.FAVORITE_DATA)
+                        DBManager.saveData(ivArea.context, item.thumbnailUrl, item, Constants.FAVORITE_DATA)
                     }
                     else {
-                        ImageMapper.removeData(ivArea.context, item.thumbnailUrl, Constants.FAVORITE_DATA)
+                        DBManager.removeData(ivArea.context, item.thumbnailUrl, Constants.FAVORITE_DATA)
                     }
                 }
             }

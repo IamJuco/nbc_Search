@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.nbc_search.Constants
 import com.example.nbc_search.R
 import com.example.nbc_search.databinding.FragmentStorageBinding
-import com.example.nbc_search.presentation.db.ImageMapper
+import com.example.nbc_search.presentation.db.DBManager
 import com.example.nbc_search.presentation.model.SearchModel
 import com.example.nbc_search.presentation.ui.search.OnClickListener
 
@@ -63,7 +63,7 @@ class StorageFragment : Fragment(), OnClickListener {
     private fun loadData(context: Context, name: String): List<SearchModel> {
         val pref = context.getSharedPreferences(name, Context.MODE_PRIVATE)
         return pref.all.mapNotNull { (key, value) ->
-            value?.let { ImageMapper.loadData(context, key, SearchModel::class.java, name) }
+            value?.let { DBManager.loadData(context, key, SearchModel::class.java, name) }
         }
     }
 
@@ -74,7 +74,7 @@ class StorageFragment : Fragment(), OnClickListener {
             .setMessage("정말 좋아요를 해제 하시겠습니까?")
             .setIcon(R.drawable.ic_favorite)
             .setPositiveButton("예") { _, _ ->
-                context?.let { ImageMapper.removeData(it,thumbnailUrl, Constants.FAVORITE_DATA ) }
+                context?.let { DBManager.removeData(it,thumbnailUrl, Constants.FAVORITE_DATA ) }
                 updateData()
             }
             .setNegativeButton("아니요") { dialog, _ ->
