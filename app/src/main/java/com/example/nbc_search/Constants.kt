@@ -14,11 +14,13 @@ class Constants {
         // 날짜
         const val DATE_FORMAT = "yyyy-MM-dd HH:mm:ss"
 
-        // favorite 데이터
+        // favorite 데이터 이름
         const val FAVORITE_DATA = "favorite_data"
 
-        // 검색 저장 데이터
+        // 검색 저장 데이터 이름
         const val SEARCH_DATA = "search_data"
+        // 검색 저장 키
+        const val SEARCH_DATA_KEY = "search_data_key"
     }
 }
 
