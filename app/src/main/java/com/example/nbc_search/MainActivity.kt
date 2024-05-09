@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.nbc_search.databinding.ActivityMainBinding
 import com.example.nbc_search.presentation.ui.search.SearchFragment
 import com.example.nbc_search.presentation.ui.storage.StorageFragment
+import com.example.nbc_search.presentation.ui.viewpager.ViewPager2Adapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {

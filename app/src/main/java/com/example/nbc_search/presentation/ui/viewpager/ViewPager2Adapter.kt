@@ -1,4 +1,4 @@
-package com.example.nbc_search
+package com.example.nbc_search.presentation.ui.viewpager
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
