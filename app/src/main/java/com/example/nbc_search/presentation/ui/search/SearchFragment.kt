@@ -21,7 +21,8 @@ import java.util.Date
 
 class SearchFragment : Fragment(), OnClickListener {
 
-    private lateinit var binding: FragmentSearchBinding
+    private var _binding: FragmentSearchBinding? = null
+    private val binding get() = _binding!!
     private lateinit var searchAdapter: SearchAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +33,7 @@ class SearchFragment : Fragment(), OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSearchBinding.inflate(inflater, container, false)
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -104,5 +105,10 @@ class SearchFragment : Fragment(), OnClickListener {
     private fun loadSearchData() {
         val lastSearchQuery = DBManager.loadData(requireContext(), Constants.SEARCH_DATA_KEY, String::class.java, Constants.SEARCH_DATA )
         binding.etSearchArea.setText(lastSearchQuery)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

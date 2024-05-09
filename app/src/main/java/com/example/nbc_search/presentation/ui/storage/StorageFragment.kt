@@ -18,7 +18,8 @@ import com.example.nbc_search.presentation.ui.search.OnClickListener
 
 class StorageFragment : Fragment(), OnClickListener {
 
-    private lateinit var binding: FragmentStorageBinding
+    private var _binding: FragmentStorageBinding? = null
+    private val binding get() = _binding!!
     private lateinit var storageAdapter: StorageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +30,7 @@ class StorageFragment : Fragment(), OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentStorageBinding.inflate(inflater, container, false)
+        _binding = FragmentStorageBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -91,6 +92,11 @@ class StorageFragment : Fragment(), OnClickListener {
     private fun updateData() {
         val favoriteItems = loadData(requireContext(), Constants.FAVORITE_DATA)
         updateAdapter(favoriteItems)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }
