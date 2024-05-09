@@ -3,21 +3,21 @@ package com.example.nbc_search.presentation.ui.viewpager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.nbc_search.presentation.ui.search.SearchFragment
+import com.example.nbc_search.presentation.ui.storage.StorageFragment
 
 class ViewPager2Adapter(items: FragmentActivity) : FragmentStateAdapter(items) {
 
-    private var fragments: ArrayList<Fragment> = ArrayList()
-
     override fun getItemCount(): Int {
-        return fragments.size
+        return TabType.entries.size
     }
 
     override fun createFragment(position: Int): Fragment {
-        return fragments[position]
-    }
+        return when (position) {
+            TabType.SEARCH.position -> SearchFragment()
+            TabType.STORAGE.position -> StorageFragment()
 
-    fun addFragment(fragment: Fragment) {
-        fragments.add(fragment)
-        notifyItemInserted(fragments.size -1)
+            else -> throw IllegalArgumentException("ERROR -> 존재하지 않는 탭입니다.")
+        }
     }
 }
