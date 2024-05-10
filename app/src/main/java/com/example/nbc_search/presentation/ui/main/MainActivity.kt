@@ -1,15 +1,12 @@
-package com.example.nbc_search
+package com.example.nbc_search.presentation.ui.main
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.nbc_search.R
 import com.example.nbc_search.databinding.ActivityMainBinding
-import com.example.nbc_search.presentation.ui.search.SearchFragment
-import com.example.nbc_search.presentation.ui.storage.StorageFragment
-import com.example.nbc_search.presentation.ui.viewpager.TabType
-import com.example.nbc_search.presentation.ui.viewpager.ViewPager2Adapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {

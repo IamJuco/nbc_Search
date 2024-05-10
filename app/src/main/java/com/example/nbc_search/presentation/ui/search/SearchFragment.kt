@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.nbc_search.R
 import com.example.nbc_search.databinding.FragmentSearchBinding
+import com.example.nbc_search.presentation.util.OnClickListener
 
 class SearchFragment : Fragment(), OnClickListener {
 

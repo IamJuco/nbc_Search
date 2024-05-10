@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.nbc_search.Constants
 import com.example.nbc_search.R
 import com.example.nbc_search.databinding.FragmentStorageBinding
-import com.example.nbc_search.presentation.ui.search.OnClickListener
+import com.example.nbc_search.presentation.util.OnClickListener
 
 class StorageFragment : Fragment(), OnClickListener {
 

@@ -10,6 +10,7 @@ import com.example.nbc_search.FormatManager
 import com.example.nbc_search.databinding.ItemSearchBinding
 import com.example.nbc_search.data.db.DBManager
 import com.example.nbc_search.presentation.model.SearchModel
+import com.example.nbc_search.presentation.util.OnClickListener
 
 class SearchAdapter(private var items: List<SearchModel>, private val listener: OnClickListener) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 

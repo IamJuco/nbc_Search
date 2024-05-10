@@ -1,4 +1,4 @@
-package com.example.nbc_search.presentation.ui.viewpager
+package com.example.nbc_search.presentation.ui.main
 
 import androidx.annotation.StringRes
 import com.example.nbc_search.R
