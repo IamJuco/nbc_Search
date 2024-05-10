@@ -41,10 +41,9 @@ class SearchFragment : Fragment(), OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupAdapter()
         setupListener()
-        loadSearchData()
+        setupObservers()
     }
 
     override fun onItemClick(position: Int) {
@@ -57,11 +56,21 @@ class SearchFragment : Fragment(), OnClickListener {
         binding.rvSearch.layoutManager = GridLayoutManager(context, 2)
     }
 
+    private fun setupObservers() {
+        viewModel.searchData.observe(viewLifecycleOwner) { data ->
+            searchAdapter.updateItems(data)
+        }
+        viewModel.loadSearchData(requireContext())?.let {
+            binding.etSearchArea.setText(it)
+        }
+    }
+
     private fun setupListener() {
         binding.ivSearchMove.setOnClickListener {
             val searchArea = binding.etSearchArea.text.toString()
             if (searchArea.isNotEmpty()) {
-                searchImages(searchArea)
+                viewModel.searchImages(searchArea)
+                viewModel.saveSearchData(requireContext(), searchArea)
             } else {
                 Toast.makeText(context, getString(R.string.fragment_search_toast_message), Toast.LENGTH_SHORT).show()
             }
@@ -69,44 +78,9 @@ class SearchFragment : Fragment(), OnClickListener {
         }
     }
 
-    private fun searchImages(query: String) {
-        // 프래그먼트가 파괴될때 자동으로 실행 중단 ( 메모리 누수 방지 )
-        lifecycleScope.launch {
-
-            // RetrofitClient에 접근및 검색어를 쿼리 파라미터중 query에 전달
-            val response = RetrofitClient.searchImageRetrofit.searchImage(query)
-
-            // SearchImageResponse의 documents에 접근
-            // documents는 ImageDocumentResponse를 리스트 형태로 가지고있음 ( 각 이미지에 대한 상세 정보 )
-            if (response.documents != null) {
-                updateAdapter(response.documents.map {
-                    SearchModel(
-                        thumbnailUrl = it.thumbnailUrl ?: "",
-                        siteName = it.displaySitename ?: "",
-                        dateTime = it.datetime ?: Date(),
-                        favorite = false
-                    )
-                })
-            }
-            saveSearchData(query)
-        }
-    }
-
-    private fun updateAdapter(items: List<SearchModel>) {
-        searchAdapter.updateItems(items)
-    }
-
     private fun keyboardHide() {
         val inputMethodManager = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         inputMethodManager?.hideSoftInputFromWindow(view?.windowToken, 0)
-    }
-    private fun saveSearchData(query: String) {
-        DBManager.saveData(requireContext(), Constants.SEARCH_DATA_KEY, query, Constants.SEARCH_DATA)
-    }
-
-    private fun loadSearchData() {
-        val lastSearchQuery = DBManager.loadData(requireContext(), Constants.SEARCH_DATA_KEY, String::class.java, Constants.SEARCH_DATA )
-        binding.etSearchArea.setText(lastSearchQuery)
     }
 
     override fun onDestroy() {
