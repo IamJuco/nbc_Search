@@ -1,4 +1,4 @@
-package com.example.nbc_search.presentation.db
+package com.example.nbc_search.data.db
 
 import android.content.Context
 import android.util.Log

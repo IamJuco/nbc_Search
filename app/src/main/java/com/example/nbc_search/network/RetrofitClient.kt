@@ -1,7 +1,7 @@
 package com.example.nbc_search.network
 
 import com.example.nbc_search.Constants
-import com.example.nbc_search.data.KakaoSearchAPI
+import com.example.nbc_search.data.remote.KakaoSearchAPI
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

@@ -1,6 +1,7 @@
-package com.example.nbc_search.data
+package com.example.nbc_search.data.remote
 
 import com.example.nbc_search.Constants
+import com.example.nbc_search.data.model.SearchImageResponse
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query

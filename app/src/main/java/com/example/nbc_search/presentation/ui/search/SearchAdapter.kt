@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.nbc_search.Constants
 import com.example.nbc_search.FormatManager
 import com.example.nbc_search.databinding.ItemSearchBinding
-import com.example.nbc_search.presentation.db.DBManager
+import com.example.nbc_search.data.db.DBManager
 import com.example.nbc_search.presentation.model.SearchModel
 
 class SearchAdapter(private var items: List<SearchModel>, private val listener: OnClickListener) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {

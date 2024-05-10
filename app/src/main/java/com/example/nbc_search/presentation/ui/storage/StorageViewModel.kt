@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.nbc_search.Constants
-import com.example.nbc_search.presentation.db.DBManager
+import com.example.nbc_search.data.db.DBManager
 import com.example.nbc_search.presentation.model.SearchModel
 
 class StorageViewModel : ViewModel() {

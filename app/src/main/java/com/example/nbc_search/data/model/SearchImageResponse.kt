@@ -1,4 +1,4 @@
-package com.example.nbc_search.data
+package com.example.nbc_search.data.model
 
 import com.google.gson.annotations.SerializedName
 import java.util.Date

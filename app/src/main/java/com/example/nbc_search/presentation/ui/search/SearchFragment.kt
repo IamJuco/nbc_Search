@@ -9,16 +9,9 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.nbc_search.Constants
 import com.example.nbc_search.R
 import com.example.nbc_search.databinding.FragmentSearchBinding
-import com.example.nbc_search.network.RetrofitClient
-import com.example.nbc_search.presentation.db.DBManager
-import com.example.nbc_search.presentation.model.SearchModel
-import kotlinx.coroutines.launch
-import java.util.Date
 
 class SearchFragment : Fragment(), OnClickListener {
 

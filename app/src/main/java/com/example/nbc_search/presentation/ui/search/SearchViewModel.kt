@@ -4,11 +4,10 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import com.example.nbc_search.Constants
 import com.example.nbc_search.network.RetrofitClient
-import com.example.nbc_search.presentation.db.DBManager
+import com.example.nbc_search.data.db.DBManager
 import com.example.nbc_search.presentation.model.SearchModel
 import kotlinx.coroutines.launch
 import java.util.Date
