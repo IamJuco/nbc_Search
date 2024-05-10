@@ -21,7 +21,7 @@ class StorageViewModel : ViewModel() {
         _storageData.value = items
     }
 
-    fun removeData(context: Context, key: String, name: String) {
+    fun removeFavoriteData(context: Context, key: String, name: String) {
         DBManager.removeData(context, key, name)
         loadData(context, Constants.FAVORITE_DATA)
     }

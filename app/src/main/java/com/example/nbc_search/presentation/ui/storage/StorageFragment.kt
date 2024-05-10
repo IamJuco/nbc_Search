@@ -76,7 +76,7 @@ class StorageFragment : Fragment(), OnClickListener {
             .setMessage("정말 좋아요를 해제 하시겠습니까?")
             .setIcon(R.drawable.ic_favorite)
             .setPositiveButton("예") { _, _ ->
-                viewModel.removeData(requireContext(), key, Constants.FAVORITE_DATA)
+                viewModel.removeFavoriteData(requireContext(), key, Constants.FAVORITE_DATA)
             }
             .setNegativeButton("아니요") { dialog, _ ->
                 dialog.dismiss()
